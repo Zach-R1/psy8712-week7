@@ -31,7 +31,7 @@ week7_tbl %>%
 (week7_tbl %>%
   ggplot(aes(q1, q2, color = gender)) + 
   geom_jitter() +
-  labs(x = "q1", y = "q2", color = "Participant Gender")) %>%
+  labs(x = "q1", y = "q2", color = "Participant Gender")) %>% # next few plots have the same dimensions becuase they all looked weird until these dimensions were selected
   ggsave("../figs/figs2.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
 (week7_tbl %>%
     ggplot(aes(q1, q2)) +
