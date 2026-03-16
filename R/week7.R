@@ -25,7 +25,7 @@ week7_tbl %>%
 (week7_tbl %>%
   ggplot(aes(timeStart, q1)) +
   geom_point() +
-  labs(x = "Date of Experiment", y = "Q1 Score")) %>%
+  labs(x = "Date of Experiment", y = "Q1 Score")) %>% # Additional Parenthesis to allow piping save
   ggsave("../figs/figs1.png", plot = ., height = 3, width = 6, units = "in", dpi = 600)
 
 (week7_tbl %>%
@@ -33,26 +33,23 @@ week7_tbl %>%
   geom_jitter() +
   labs(x = "q1", y = "q2", color = "Participant Gender")) %>%
   ggsave("../figs/figs2.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
+(week7_tbl %>%
+    ggplot(aes(q1, q2)) +
+    geom_jitter() +
+    facet_grid(.~gender) +
+    labs(x = "Score on Q1", y = "Score on Q2")) %>%
+    ggsave("../figs/figs3.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(week7_tbl %>%
+  ggplot(aes(gender, timeSpent)) +
+  geom_boxplot() +
+  labs(x = "Gender", y = " Time Elapsed (mins)")) %>%
+  ggsave("../figs/figs4.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
+  
+(week7_tbl %>%
+  ggplot(aes(q5, q7, color = condition)) +
+  geom_jitter() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Score on Q5", y = "Score on Q7", color = "Experimental Condition") +
+  theme(legend.position = "bottom", legend.background = element_rect(fill = "#DFDFDF"))) %>%
+  ggsave("../figs/figs5.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
