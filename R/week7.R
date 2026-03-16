@@ -28,7 +28,11 @@ week7_tbl %>%
   labs(x = "Date of Experiment", y = "Q1 Score")) %>%
   ggsave("../figs/figs1.png", plot = ., height = 3, width = 6, units = "in", dpi = 600)
 
-
+(week7_tbl %>%
+  ggplot(aes(q1, q2, color = gender)) + 
+  geom_jitter() +
+  labs(x = "q1", y = "q2", color = "Participant Gender")) %>%
+  ggsave("../figs/figs2.png", plot = ., height = 4, width = 8, units = "in", dpi = 600)
 
 
 
